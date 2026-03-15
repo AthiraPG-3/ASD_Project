@@ -1,0 +1,41 @@
+stages:
+  features:
+    cmd: python scripts/extract_features.py --params params.yaml
+    deps:
+      - scripts/extract_features.py
+      - src/autism_mlops/data.py
+      - src/autism_mlops/features.py
+      - src/autism_mlops/config.py
+      - params.yaml
+      - data/scans
+    outs:
+      - data/features/features.npz
+
+  train:
+    cmd: python scripts/train_models.py --params params.yaml
+    deps:
+      - scripts/train_models.py
+      - src/autism_mlops/train.py
+      - src/autism_mlops/mlflow_utils.py
+      - src/autism_mlops/plots.py
+      - src/autism_mlops/config.py
+      - params.yaml
+      - data/features/features.npz
+    outs:
+      - models/best_model.joblib
+      - reports/metrics.json
+      - reports/confusion_matrix.png
+      - reports/val_leaderboard.csv
+
+  monitor:
+    cmd: python scripts/monitor.py --params params.yaml
+    deps:
+      - scripts/monitor.py
+      - src/autism_mlops/monitoring.py
+      - src/autism_mlops/config.py
+      - params.yaml
+      - data/features/features.npz
+      - models/best_model.joblib
+    outs:
+      - reports/drift_report.html
+

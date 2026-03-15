@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+.venv/
+venv/
+ENV/
+.env
+
+# Packaging
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Data / models / reports (tracked by DVC instead)
+data/scans/
+data/features/
+models/
+reports/
+
+# MLflow local store
+mlruns/
+
+# DVC
+.dvc/cache/
+
+# OS
+Thumbs.db
+Desktop.ini
+
