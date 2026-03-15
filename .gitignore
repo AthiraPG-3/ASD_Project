@@ -33,3 +33,4 @@ mlruns/
 Thumbs.db
 Desktop.ini
 
+.dvc\config.local
