@@ -1,0 +1,6 @@
+outs:
+- md5: 83f3c50e1bf4775d5ac462377f4c85e9.dir
+  size: 159821327
+  nfiles: 19362
+  hash: md5
+  path: scans
